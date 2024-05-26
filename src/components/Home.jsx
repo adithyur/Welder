@@ -212,17 +212,17 @@ const aboutleftanimationProps = useSpring({
                         <div className="hidden sm:block sm:ml-6 md:flex md:ml-6">
                             <div className="flex flex-grow justify-between navbar-opt">
                                 <a href="#home" className="text-white md:text-red-500 px-3 md:text-base lg:text-xl font-bold ">HOME</a>
-                                <a href="#about" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 md:text-base lg:text-xl font-bold">ABOUT US</a>
-                                <a href="#services" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 md:text-base lg:text-xl font-bold">SERVICES</a>
-                                <a href="#projects" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 md:text-base lg:text-xl font-bold">PROJECTS</a>
-                                <a href="#contact" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 md:text-base lg:text-xl font-bold">CONTACT US</a>
+                                <a href="#about" className="text-gray-300 hover:text-red-500 hover:text-white px-3 md:text-base lg:text-xl font-bold">ABOUT US</a>
+                                <a href="#services" className="text-gray-300 hover:text-red-500 hover:text-white rounded-md px-3 md:text-base lg:text-xl font-bold">SERVICES</a>
+                                <a href="#projects" className="text-gray-300 hover:text-red-500 hover:text-white rounded-md px-3 md:text-base lg:text-xl font-bold">PROJECTS</a>
+                                <a href="#contact" className="text-gray-300 hover:text-red-500 hover:text-white rounded-md px-3 md:text-base lg:text-xl font-bold">CONTACT US</a>
                             </div>
                         </div>
                         <div className="flex sm:hidden">
                             <button
                                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                                 type="button"
-                                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:text-red-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
                                 aria-controls="mobile-menu"
                                 aria-expanded={mobileMenuOpen}
                             >
@@ -243,9 +243,9 @@ const aboutleftanimationProps = useSpring({
                 <div className={mobileMenuOpen ? 'block' : 'hidden'} id="mobile-menu">
                     <div className="px-2 pt-2 pb-3 space-y-1">
                     <a href="#" className="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-bold">Dashboard</a>
-                    <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-bold">Team</a>
-                    <a href="#projects" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-bold">Projects</a>
-                    <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-bold">Calendar</a>
+                    <a href="#" className="text-gray-300 hover:text-red-500 hover:text-white block px-3 py-2 rounded-md text-base font-bold">Team</a>
+                    <a href="#projects" className="text-gray-300 hover:text-red-500 hover:text-white block px-3 py-2 rounded-md text-base font-bold">Projects</a>
+                    <a href="#" className="text-gray-300 hover:text-red-500 hover:text-white block px-3 py-2 rounded-md text-base font-bold">Calendar</a>
                     </div>
                 </div>
             </div>
@@ -260,7 +260,7 @@ const aboutleftanimationProps = useSpring({
                 key={index}
                 src={process.env.PUBLIC_URL + '/' + image}
                 alt={`Image ${index + 1}`}
-                className={`absolute inset-0 w-full h-full  opacity-${index === currentIndex ? '100' : '0'} transition-opacity duration-0 home-img`}
+                className={`absolute inset-0 w-full h-full object-fill  opacity-${index === currentIndex ? '100' : '0'} transition-opacity duration-0 home-img`}
                 style={{
                     animation: index === currentIndex ? 'zoom-in 6s ease-in-out' : 'none',
                     filter: index === currentIndex ? 'opacity-100' : 'opacity-0',
@@ -307,6 +307,9 @@ const aboutleftanimationProps = useSpring({
                         <p className="mb-4 text-gray-400">
                             Contact us today to discuss your project needs. Let us help you achieve your welding goals!
                         </p>
+                        <p className="mb-8 text-xl text-white mt-12">
+                            Roof works starts @ <span className='text-red-500 font-bold'> SQFT ₹15 </span> only
+                        </p>
                     </div>
                     <div className='flex flex-col md:flex-row lg:flex-row mx-auto'>
                         <div className="count-value-container">
@@ -325,7 +328,7 @@ const aboutleftanimationProps = useSpring({
                 </animated.div>
             </div>
             <div className='mb-28'>
-                <div className='flex lg:mt-2 xl:mt-56 lg:ml-8 justify-center'>
+                <div className='flex lg:mt-2 xl:mt-24 lg:ml-8 justify-center'>
                     <p className='text-center text-white font-bold md:text-4xl'>
                         TRUSTED BY &nbsp;
                     </p>
@@ -336,8 +339,22 @@ const aboutleftanimationProps = useSpring({
                         &nbsp; CLIENTS
                     </p>
                 </div>
-                <div style={{backgroundColor:'yellow'}}>
-                    client logo
+                <div className='flex justify-between mt-12'>
+                    <div>
+                        <img src={`${process.env.PUBLIC_URL}/clientlogo1.png`} alt="About" className="h-20 filter brightness-0 invert" />
+                    </div>
+                    <div>
+                        <img src={`${process.env.PUBLIC_URL}/clientlogo2.png`} alt="About" className="h-32 filter brightness-0 invert" />
+                    </div>
+                    <div>
+                        <img src={`${process.env.PUBLIC_URL}/clientlogo3.png`} alt="About" className="h-32 filter brightness-0 invert" />
+                    </div>
+                    <div>
+                        <img src={`${process.env.PUBLIC_URL}/clientlogo4.png`} alt="About" className="h-32 filter brightness-0 invert" />
+                    </div>
+                    <div>
+                        <img src={`${process.env.PUBLIC_URL}/clientlogo4.png`} alt="About" className="h-32 filter brightness-0 invert" />
+                    </div>
                 </div>
             </div>
         </div>
@@ -361,7 +378,7 @@ const aboutleftanimationProps = useSpring({
                             </div>
                             <div className="text-center">
                                 <h1 className='text-white font-bold text-2xl tracking-wide'>ON-SITE STRUCTURAL FABRICATION</h1>
-                                <p className='text-gray-400 mt-5'>Specialized welding solutions for aluminum structures, ensuring precision and quality.</p>
+                                <p className='text-gray-400 mt-5'>Expert on-site structural fabrication services for precision and durability.</p>
                             </div>
                         </animated.div>
                         <animated.div className="flex flex-col justify-center items-center p-4 border-2 service-card transition-slide" style={serviceanimationProps2}>
@@ -370,7 +387,7 @@ const aboutleftanimationProps = useSpring({
                             </div>
                             <div className="text-center">
                                 <h1 className='text-white font-bold text-2xl tracking-wide'>STAINLESS STEEL FABRICATION</h1>
-                                <p className='text-gray-400 mt-5'>Expert welding services for stainless steel projects, ensuring strength and durability.</p>
+                                <p className='text-gray-400 mt-5'>High-quality stainless steel fabrication for precision engineering.</p>
                             </div>
                         </animated.div>
                         <animated.div className="flex flex-col justify-center items-center p-4 border-2 service-card transition-slide" style={serviceanimationProps3}>
@@ -379,7 +396,7 @@ const aboutleftanimationProps = useSpring({
                             </div>
                             <div className="text-center">
                                 <h1 className='text-white font-bold text-2xl tracking-wide'>Body</h1>
-                                <p className='text-gray-400 mt-5'>Precision metal cutting services tailored to your project needs, ensuring accuracy and efficiency.</p>
+                                <p className='text-gray-400 mt-5'>Expert vehicle body work for flawless repairs and refinishing.</p>
                             </div>
                         </animated.div>
                         <animated.div className="flex flex-col justify-center items-center p-4 border-2 service-card transition-slide" style={serviceanimationProps4}>
@@ -390,7 +407,7 @@ const aboutleftanimationProps = useSpring({
                             </div>
                             <div className="text-center">
                                 <h1 className='text-white font-bold text-2xl tracking-wide'>Polycarbon roofing</h1>
-                                <p className='text-gray-400 mt-5'>Precision metal cutting services tailored to your needs.</p>
+                                <p className='text-gray-400 mt-5'>Durable and lightweight polycarbonate roofing solutions.</p>
                             </div>
                         </animated.div>
                         <animated.div className="flex flex-col justify-center items-center p-4 border-2 service-card transition-slide" style={serviceanimationProps5}>
@@ -400,7 +417,7 @@ const aboutleftanimationProps = useSpring({
                             </div>
                             <div className="text-center">
                                 <h1 className='text-white font-bold text-2xl tracking-wide'>Ceramic roofing</h1>
-                                <p className='text-gray-400 mt-5'>Expert structural fabrication solutions delivered directly to your location.</p>
+                                <p className='text-gray-400 mt-5'>Premium ceramic roofing for lasting beauty and durability.</p>
                             </div>
                         </animated.div>
                         <animated.div className="flex flex-col justify-center items-center p-4 border-2 service-card transition-slide" style={serviceanimationProps6}>
@@ -409,7 +426,7 @@ const aboutleftanimationProps = useSpring({
                             </div>
                             <div className="text-center">
                                 <h1 className='text-white font-bold text-2xl tracking-wide'>AUTOMATIC GATE</h1>
-                                <p className='text-gray-400 mt-5'>Precision arc welding services for your toughest projects.</p>
+                                <p className='text-gray-400 mt-5'>Reliable automatic gate systems for enhanced security and convenience.</p>
                             </div>
                         </animated.div>
                     </div>
