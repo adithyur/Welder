@@ -285,7 +285,7 @@ const aboutleftanimationProps = useSpring({
                 <div className="mx-auto max-w-8xl px-4 sm:px-6 md:px-8 lg:px-10">
                     <div className='flex items-center justify-between h-24'>
                         <div className="flex-shrink-0 navbar-logo">
-                            <img className="h-8 w-auto lg:h-10 lg:w-auto filter brightness-0 invert" src={`${process.env.PUBLIC_URL}/logo2.png`} alt="Your Company" />
+                            <img href='#home' className="h-8 w-auto lg:h-10 lg:w-auto filter brightness-0 invert" src={`${process.env.PUBLIC_URL}/logo2.png`} alt="Your Company" />
                         </div>
                         <div className="hidden sm:block sm:ml-6 md:flex md:ml-6">
                             <div className="flex flex-grow justify-between navbar-opt">
@@ -429,7 +429,7 @@ const aboutleftanimationProps = useSpring({
         </div>
         <div className='mb-20'>
             <div>
-                <div className='flex lg:mt-2 xl:mt-24 lg:ml-8 justify-center'>
+                <div className='flex mt-10 lg:mt-2 xl:mt-24 lg:ml-8 justify-center'>
                     <p className='text-center text-white font-bold md:text-4xl'>
                         TRUSTED BY &nbsp;
                     </p>
@@ -440,7 +440,7 @@ const aboutleftanimationProps = useSpring({
                         &nbsp; CLIENTS
                     </p>
                 </div>
-                <div className='mt-12 min-w-max logos flex'>
+                <div className='mt-5 lg:mt-12 min-w-max logos flex'>
                     <div className='flex justify-between logos-slide'>
                         <div className='flex items-center mx-5'>
                             <img src={`${process.env.PUBLIC_URL}/clientlogo2.png`} alt="About" className="h-20 lg:h-28 filter brightness-0 invert client-logo" />
@@ -586,7 +586,7 @@ const aboutleftanimationProps = useSpring({
                                 <h1 className='text-white font-bold xl:text-xl pt-5 xl:pt-8 px-5'>
                                     01/. Think precision
                                 </h1>
-                                <p className='text-gray-400 xl:pt-8 xl:px-12'>
+                                <p className='text-gray-400 xl:pt-8 px-5 xl:px-12 pb-5'>
                                     Precision at its finest, ensuring excellence in every detail.
                                 </p>
                             </animated.div>
@@ -594,7 +594,7 @@ const aboutleftanimationProps = useSpring({
                                 <h1 className='text-white font-bold xl:text-xl pt-5 xl:pt-8 px-5'>
                                     02/. Competitive pricing
                                 </h1>
-                                <p className='text-gray-400 xl:pt-8 xl:px-12'>
+                                <p className='text-gray-400 xl:pt-8 px-5 xl:px-12 pb-5'>
                                     Offering competitive pricing without compromising on quality.
                                 </p>
                             </animated.div>
@@ -602,7 +602,7 @@ const aboutleftanimationProps = useSpring({
                                 <h1 className='text-white font-bold xl:text-xl pt-5 xl:pt-8 px-5'>
                                     03/. Honest & dependable
                                 </h1>
-                                <p className='text-gray-400 xl:pt-8 xl:px-12'>
+                                <p className='text-gray-400 xl:pt-8 px-5 xl:px-12 pb-5'>
                                     Providing honest and dependable service you can trust.
                                 </p>
                             </animated.div>
@@ -610,7 +610,7 @@ const aboutleftanimationProps = useSpring({
                                 <h1 className='text-white font-bold xl:text-xl pt-5 xl:pt-8 px-5'>
                                     04/. Customer Satisfaction
                                 </h1>
-                                <p className='text-gray-400 xl:pt-8 xl:px-12'>
+                                <p className='text-gray-400 xl:pt-8 px-5 xl:px-12 pb-5'>
                                     Ensuring customer satisfaction every step of the way.
                                 </p>
                             </animated.div>
@@ -676,32 +676,53 @@ const aboutleftanimationProps = useSpring({
         <footer id='contact' ref={el => sections.current['#contact'] = el} className="bg-black text-white py-8 px-8">
             <div className="container mx-auto flex flex-wrap justify-between">
                 <div className="w-full md:w-1/2 lg:w-1/4 px-4 mb-6 mt-10">
-                    <img src={`${process.env.PUBLIC_URL}/logo.png`} className='filter brightness-0 invert h-24' alt="Map" />
-                    <div className='flex mt-5'>
-                        <a href="#" className="flex items-center justify-center ms-10 w-12 h-12 hover:bg-red-500 border border-white rounded-full text-white">
-                            <FaInstagram />
-                        </a>
-                        <a href="#" className="flex items-center mx-5 justify-center w-12 h-12 hover:bg-red-500 border border-white rounded-full text-white">
-                            <FaWhatsapp />
-                        </a>
-                        <a href="#" className="flex items-center justify-center w-12 h-12 border hover:bg-red-500 border-white rounded-full text-white">
-                            <FaFacebook />
-                        </a>
+                    <div className='flex flex-col items-center justify-center'>
+                        <img src={`${process.env.PUBLIC_URL}/logo.png`} className='filter brightness-0 invert h-24' alt="Map" />
+                        <div className='flex mt-5'>
+                            <a href="#" className="flex items-center justify-center -ms-5 w-12 h-12 hover:bg-red-500 border border-white rounded-full text-white">
+                                <FaInstagram />
+                            </a>
+                            <a href="#" className="flex items-center mx-5 justify-center w-12 h-12 hover:bg-red-500 border border-white rounded-full text-white">
+                                <FaWhatsapp />
+                            </a>
+                            <a href="#" className="flex items-center justify-center w-12 h-12 border hover:bg-red-500 border-white rounded-full text-white">
+                                <FaFacebook />
+                            </a>
+                        </div>
                     </div>
                 </div>
                 {/* Contact Information */}
                 <div className="w-full md:w-1/2 lg:w-1/4 px-4 mb-6">
                     <h2 className="text-lg font-bold mb-4">Contact</h2>
-                    <p className="mb-2 flex items-center tracking-wider hover:text-red-500 leading-loose mt-6"><FaMapMarkerAlt className="mr-2"/>Nooranadu, Alappuzha</p>
-                    <p className="mb-2 flex items-center tracking-wider hover:text-red-500 leading-loose"><FaEnvelope className="mr-2"/>Kiranironbuilders@gmail.com</p>
-                    <p className="mb-2 flex items-center tracking-wider hover:text-red-500 leading-loose"><FaPhoneAlt className="mr-2"/>+91 9207083903</p>
-                    <p className="mb-2 flex items-center tracking-wider hover:text-red-500 leading-loose"><FaWhatsapp className="mr-2"/>+91 9207083903</p>
+                    <p 
+                        className="mb-2 flex items-center tracking-wider hover:text-red-500 leading-loose mt-6"
+                        onClick={() => window.open("https://www.google.com/maps?q=9.195950,76.628030", "_blank")}
+                    ><FaMapMarkerAlt className="mr-2"/>Nooranadu, Alappuzha</p>
+                    <a 
+                        className="mb-2 flex items-center tracking-wider hover:text-red-500 leading-loose"
+                        href='mailto:Kiranironbuilders@gmail.com'
+                    ><FaEnvelope className="mr-2"/>Kiranironbuilders@gmail.com</a>
+                    <a 
+                        className="mb-2 flex items-center tracking-wider hover:text-red-500 leading-loose"
+                        href="tel:+919207083903"
+                    ><FaPhoneAlt className="mr-2"/>+91 9207083903</a>
+                    <a
+                        href="https://wa.me/919207083903" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="mb-2 flex items-center tracking-wider hover:text-red-500 leading-loose"
+                    ><FaWhatsapp className="mr-2"/>+91 9207083903</a>
                 </div>
 
                 {/* Map Image */}
                 <div className="w-full md:w-1/2 lg:w-1/4 mb-6 flex flex-wrap justify-between pe-4">
                     <h2 className="text-lg font-bold mb-4">We are here!</h2>
-                    <img src={`${process.env.PUBLIC_URL}/map.jpeg`} alt="Map" className="h-40 mt-1 rounded-lg shadow-lg" />
+                    <img 
+                        src={`${process.env.PUBLIC_URL}/map.jpeg`} 
+                        alt="Map" 
+                        className="h-40 mt-1 rounded-lg shadow-lg cursor-pointer mr-2"
+                        onClick={() => window.open("https://www.google.com/maps?q=9.195950,76.628030", "_blank")}
+                    />
                 </div>
 
                 {/* Sitemap */}
@@ -710,8 +731,8 @@ const aboutleftanimationProps = useSpring({
                     <ul className='mt-5'>
                         <li><a href="#home" className="text-gray-400 hover:text-red-500 tracking-wider leading-loose">Home</a></li>
                         <li><a href="#about" className="text-gray-400 hover:text-red-500 tracking-wider leading-loose">About us</a></li>
-                        <li><a href="#services" className="text-gray-400 hover:text-red-500 tracking-wider leading-loose	">Services</a></li>
-                        <li><a href="#services" className="text-gray-400 hover:text-red-500 tracking-wider leading-loose	">Project</a></li>
+                        <li><a href="#services" className="text-gray-400 hover:text-red-500 tracking-wider leading-loose">Services</a></li>
+                        <li><a href="#projects" className="text-gray-400 hover:text-red-500 tracking-wider leading-loose">Project</a></li>
                         <li><a href="#contact" className="text-gray-400 hover:text-red-500 tracking-wider leading-loose">Contact</a></li>
                     </ul>
                 </div>
