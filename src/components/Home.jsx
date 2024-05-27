@@ -1,25 +1,26 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useSpring, animated } from '@react-spring/web'
 import CountUp from 'react-countup';
-import { FaFacebook } from "react-icons/fa";
 import { MdHomeWork } from "react-icons/md";
 import { GiFlamethrower } from "react-icons/gi";
 import { MdOutlineRoofing } from "react-icons/md";
 import { RiTruckLine } from "react-icons/ri";
 import { GiSteampunkGoggles } from "react-icons/gi";
 import { GiGloves } from "react-icons/gi";
-
+import { FaMapMarkerAlt, FaEnvelope, FaPhoneAlt, FaWhatsapp, FaInstagram, FaFacebook } from 'react-icons/fa';
+import { IoIosStar } from 'react-icons/io';
+import { RxAvatar } from "react-icons/rx";
 import '../styles.css';
 
 function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeLink, setActiveLink] = useState('#home');
   const images = ['slider1.jpg', 'slider2.jpg', 'slider3.jpeg'];
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [isServiceVisible, setIsServiceVisible] = useState(false);
   const [isChooseVisible, setIsChooseVisible] = useState(false);
-  const videoRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -195,6 +196,83 @@ const aboutleftanimationProps = useSpring({
     delay: 300,
   });
 
+  const videoRef = useRef(null);
+    const [isPlaying, setIsPlaying] = useState(false);
+
+    const handlePlayPause = () => {
+        if (videoRef.current.paused) {
+            videoRef.current.play();
+            setIsPlaying(true);
+        } else {
+            videoRef.current.pause();
+            setIsPlaying(false);
+        }
+    };
+
+    const reviews = [
+        {
+            name: 'Praveen Prasannan',
+            rating: 5,
+            comment: `Exact timing
+            Quality work
+            Affordable cost
+            Best in town... Not replaceable`,
+            profilePhotoUrl: 'https://via.placeholder.com/150'
+        },
+        {
+            name: 'Sunu S',
+            rating: 5,
+            comment: 'Good quality and affordable prize❣️',
+            profilePhotoUrl: 'https://via.placeholder.com/150'
+        },
+        {
+            name: 'Salumon Thaloor',
+            rating: 5,
+            comment: 'Great service all over in Kerala. Professional working methods and quality works at low price',
+            profilePhotoUrl: 'https://via.placeholder.com/150'
+        }
+    ];
+
+    const handleLinkClick = (link) => {
+        setActiveLink(link);
+    };
+
+    const sections = useRef({
+        '#home': null,
+        '#about': null,
+        '#services': null,
+        '#projects': null,
+        '#contact': null
+    });
+
+    useEffect(() => {
+        const options = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.25
+        };
+    
+        const observerCallback = (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setActiveLink(`#${entry.target.id}`);
+                }
+            });
+        };
+    
+        const observer = new IntersectionObserver(observerCallback, options);
+    
+        Object.values(sections.current).forEach(section => {
+            if (section) observer.observe(section);
+        });
+    
+        return () => {
+            Object.values(sections.current).forEach(section => {
+                if (section) observer.unobserve(section);
+            });
+        };
+    }, []);
+
   return (
     <div className='overflow-x-hidden' style={{backgroundColor:'#222222'}}>
 
@@ -207,15 +285,35 @@ const aboutleftanimationProps = useSpring({
                 <div className="mx-auto max-w-8xl px-4 sm:px-6 md:px-8 lg:px-10">
                     <div className='flex items-center justify-between h-24'>
                         <div className="flex-shrink-0 navbar-logo">
-                            <img className="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company" />
+                            <img className="h-8 w-auto lg:h-10 lg:w-auto filter brightness-0 invert" src={`${process.env.PUBLIC_URL}/logo2.png`} alt="Your Company" />
                         </div>
                         <div className="hidden sm:block sm:ml-6 md:flex md:ml-6">
                             <div className="flex flex-grow justify-between navbar-opt">
-                                <a href="#home" className="text-white md:text-red-500 px-3 md:text-base lg:text-xl font-bold ">HOME</a>
-                                <a href="#about" className="text-gray-300 hover:text-red-500 hover:text-white px-3 md:text-base lg:text-xl font-bold">ABOUT US</a>
-                                <a href="#services" className="text-gray-300 hover:text-red-500 hover:text-white rounded-md px-3 md:text-base lg:text-xl font-bold">SERVICES</a>
-                                <a href="#projects" className="text-gray-300 hover:text-red-500 hover:text-white rounded-md px-3 md:text-base lg:text-xl font-bold">PROJECTS</a>
-                                <a href="#contact" className="text-gray-300 hover:text-red-500 hover:text-white rounded-md px-3 md:text-base lg:text-xl font-bold">CONTACT US</a>
+                                <a 
+                                    href="#home" 
+                                    className={`px-3 hover:text-red-500 md:text-base lg:text-xl font-bold ${activeLink === '#home' ? 'text-red-500' : 'text-white'}`}
+                                    onClick={() => handleLinkClick('#home')}
+                                >HOME</a>
+                                <a 
+                                    href="#about" 
+                                    className={`px-3 hover:text-red-500 md:text-base lg:text-xl font-bold ${activeLink === '#about' ? 'text-red-500' : 'text-white'}`}
+                                    onClick={() => handleLinkClick('#about')}
+                                >ABOUT US</a>
+                                <a 
+                                    href="#services" 
+                                    className={`px-3 hover:text-red-500 md:text-base lg:text-xl font-bold ${activeLink === '#services' ? 'text-red-500' : 'text-white'}`}
+                                    onClick={() => handleLinkClick('#services')}
+                                >SERVICES</a>
+                                <a 
+                                    href="#projects" 
+                                    className={`px-3 hover:text-red-500 md:text-base lg:text-xl font-bold ${activeLink === '#projects' ? 'text-red-500' : 'text-white'}`}
+                                    onClick={() => handleLinkClick('#projects')}
+                                >PROJECTS</a>
+                                <a 
+                                    href="#contact" 
+                                    className={`px-3 hover:text-red-500 md:text-base lg:text-xl font-bold ${activeLink === '#contact' ? 'text-red-500' : 'text-white'}`}
+                                    onClick={() => handleLinkClick('#contact')}
+                                >CONTACT US</a>
                             </div>
                         </div>
                         <div className="flex sm:hidden">
@@ -242,10 +340,11 @@ const aboutleftanimationProps = useSpring({
                 </div>
                 <div className={mobileMenuOpen ? 'block' : 'hidden'} id="mobile-menu">
                     <div className="px-2 pt-2 pb-3 space-y-1">
-                    <a href="#" className="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-bold">Dashboard</a>
-                    <a href="#" className="text-gray-300 hover:text-red-500 hover:text-white block px-3 py-2 rounded-md text-base font-bold">Team</a>
-                    <a href="#projects" className="text-gray-300 hover:text-red-500 hover:text-white block px-3 py-2 rounded-md text-base font-bold">Projects</a>
-                    <a href="#" className="text-gray-300 hover:text-red-500 hover:text-white block px-3 py-2 rounded-md text-base font-bold">Calendar</a>
+                        <a href="#home" className={`block px-3 py-2 text-base font-bold hover:text-red-500 ${activeLink === '#home' ? 'text-red-500' : 'text-white'}`}>HOME</a>
+                        <a href="#about" className={`block px-3 py-2 text-base font-bold hover:text-red-500 ${activeLink === '#about' ? 'text-red-500' : 'text-white'}`}>ABOUT US</a>
+                        <a href="#services" className={`block px-3 py-2 text-base font-bold hover:text-red-500 ${activeLink === '#services' ? 'text-red-500' : 'text-white'}`}>SERVICES</a>
+                        <a href="#projects" className={`block px-3 py-2 text-base font-bold hover:text-red-500 ${activeLink === '#projects' ? 'text-red-500' : 'text-white'}`}>PROJECTS</a>
+                        <a href="#contact" className={`block px-3 py-2 text-base font-bold hover:text-red-500 ${activeLink === '#contact' ? 'text-red-500' : 'text-white'}`}>CONTACT US</a>
                     </div>
                 </div>
             </div>
@@ -254,7 +353,7 @@ const aboutleftanimationProps = useSpring({
 
 
         {/* Home */}
-        <div id="home" className="relative h-screen overflow-hidden">
+        <div id="home" ref={el => sections.current['#home'] = el} className="relative h-screen overflow-hidden">
             {images.map((image, index) => (
                 <img
                 key={index}
@@ -281,7 +380,7 @@ const aboutleftanimationProps = useSpring({
 
         {/* About us */}
         <div className='container mx-auto '>
-            <div className=' flex flex-col px-4 sm:px-6 md:px-8 lg:px-10 md:flex-row lg:flex-row mx-auto mt-28' id='about'>
+            <div id='about' ref={el => sections.current['#about'] = el} className=' flex flex-col px-4 sm:px-6 md:px-8 lg:px-10 md:flex-row lg:flex-row mx-auto mt-28'>
                 <animated.div className='relative sm:w-screen md:w-1/3 lg:w-1/3 xl:w-1/3 text-red-500 transition-slide' style={aboutleftanimationProps}>
                     <h1 className=' sm:block md:hidden lg:hidden xl:hidden font-bold text-red-500 content-heading'>
                         ABOUT US
@@ -327,7 +426,9 @@ const aboutleftanimationProps = useSpring({
                     </div>
                 </animated.div>
             </div>
-            <div className='mb-28'>
+        </div>
+        <div className='mb-20'>
+            <div>
                 <div className='flex lg:mt-2 xl:mt-24 lg:ml-8 justify-center'>
                     <p className='text-center text-white font-bold md:text-4xl'>
                         TRUSTED BY &nbsp;
@@ -339,30 +440,69 @@ const aboutleftanimationProps = useSpring({
                         &nbsp; CLIENTS
                     </p>
                 </div>
-                <div className='flex justify-between mt-12'>
-                    <div>
-                        <img src={`${process.env.PUBLIC_URL}/clientlogo1.png`} alt="About" className="h-20 filter brightness-0 invert" />
+                <div className='mt-12 min-w-max logos flex'>
+                    <div className='flex justify-between logos-slide'>
+                        <div className='flex items-center mx-5'>
+                            <img src={`${process.env.PUBLIC_URL}/clientlogo2.png`} alt="About" className="h-20 lg:h-28 filter brightness-0 invert client-logo" />
+                        </div>
+                        <div className='flex items-center mx-5'>
+                            <img src={`${process.env.PUBLIC_URL}/clientlogo1.png`} alt="About" className="h-10 lg:h-12 filter brightness-0 invert client-logo" />
+                        </div>
+                        <div className='flex items-center mx-5'>
+                            <img src={`${process.env.PUBLIC_URL}/clientlogo4.png`} alt="About" className="h-20 lg:h-28 filter brightness-0 invert client-logo" />
+                        </div>
+                        <div className='flex items-center mx-5'>
+                            <img src={`${process.env.PUBLIC_URL}/clientlogo3.png`} alt="About" className="h-16 lg:h-24 filter brightness-0 invert client-logo" />
+                        </div>
+                        <div className='flex items-center mx-5'>
+                            <img src={`${process.env.PUBLIC_URL}/clientlogo4.png`} alt="About" className="h-20 lg:h-28 filter brightness-0 invert client-logo" />
+                        </div>
                     </div>
-                    <div>
-                        <img src={`${process.env.PUBLIC_URL}/clientlogo2.png`} alt="About" className="h-32 filter brightness-0 invert" />
-                    </div>
-                    <div>
-                        <img src={`${process.env.PUBLIC_URL}/clientlogo3.png`} alt="About" className="h-32 filter brightness-0 invert" />
-                    </div>
-                    <div>
-                        <img src={`${process.env.PUBLIC_URL}/clientlogo4.png`} alt="About" className="h-32 filter brightness-0 invert" />
-                    </div>
-                    <div>
-                        <img src={`${process.env.PUBLIC_URL}/clientlogo4.png`} alt="About" className="h-32 filter brightness-0 invert" />
+                    <div className='flex justify-between logos-slide'>
+                        <div className='flex items-center mx-5'>
+                            <img src={`${process.env.PUBLIC_URL}/clientlogo2.png`} alt="About" className="h-20 lg:h-28 filter brightness-0 invert client-logo" />
+                        </div>
+                        <div className='flex items-center mx-5'>
+                            <img src={`${process.env.PUBLIC_URL}/clientlogo1.png`} alt="About" className="h-10 lg:h-12 filter brightness-0 invert client-logo" />
+                        </div>
+                        <div className='flex items-center mx-5'>
+                            <img src={`${process.env.PUBLIC_URL}/clientlogo4.png`} alt="About" className="h-20 lg:h-28 filter brightness-0 invert client-logo" />
+                        </div>
+                        <div className='flex items-center mx-5'>
+                            <img src={`${process.env.PUBLIC_URL}/clientlogo3.png`} alt="About" className="h-16 lg:h-24 filter brightness-0 invert client-logo" />
+                        </div>
+                        <div className='flex items-center'>
+                            <img src={`${process.env.PUBLIC_URL}/clientlogo4.png`} alt="About" className="h-20 lg:h-28 filter brightness-0 invert client-logo" />
+                        </div>
                     </div>
                 </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ms-8 me-10 gap-4 mt-12 p-4">
+                {reviews.map((review, index) => (
+                    <div key={index} className="review-card p-4 border rounded-lg shadow-lg bg-white">
+                        <div className="flex items-center mb-4">
+                        <a alt={review.name} className="w-12 h-12 rounded-full object-cover flex justify-center items-center">
+                            <RxAvatar size={44} className='pt-1'/>
+                        </a>
+                            <div className='ps-3'>
+                                <h3 className="font-bold">{review.name}</h3>
+                                <div className="flex">
+                                    {[...Array(review.rating)].map((_, i) => (
+                                        <IoIosStar key={i} className="text-yellow-500" />
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                        <p className="whitespace-pre-line ms-16">{review.comment}</p>
+                    </div>
+                ))}
             </div>
         </div>
         {/* End of About us */}
 
         {/* SERVICES */}
         <div class="bg-fixed bg-cover service-img" style={{backgroundImage: `url(${process.env.PUBLIC_URL}/service2.jpeg)`}}>
-            <div className='container mx-auto' id='services'>
+            <div id='services' ref={el => sections.current['#services'] = el} className='container mx-auto'>
                 <h1 className='text-left pl-5 md:text-center lg:text-center font-bold text-red-500 content-heading pt-28'>
                     OUR SERVICES
                 </h1>
@@ -373,8 +513,7 @@ const aboutleftanimationProps = useSpring({
                     <div className='services-txt grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-5 md:mx-8 lg:mx-24 xl:mx-28'>
                         <animated.div className="flex flex-col justify-center items-center p-4 border-2 service-card transition-slide" style={serviceanimationProps1}>
                             <div className="mb-4">
-                                <MdHomeWork className="h-40 w-40 mr-2 text-red-500 srvc-icon" />
-                                 
+                                <MdHomeWork className="h-20 w-20 lg:h-28 lg:w-28 mr-2 text-red-500 srvc-icon" />
                             </div>
                             <div className="text-center">
                                 <h1 className='text-white font-bold text-2xl tracking-wide'>ON-SITE STRUCTURAL FABRICATION</h1>
@@ -383,7 +522,7 @@ const aboutleftanimationProps = useSpring({
                         </animated.div>
                         <animated.div className="flex flex-col justify-center items-center p-4 border-2 service-card transition-slide" style={serviceanimationProps2}>
                             <div className="mb-4">
-                                <GiGloves className="h-40 w-40 mr-2 text-red-500 srvc-icon"/>
+                                <GiGloves className="h-20 w-20 lg:h-28 lg:w-28 mr-2 text-red-500 srvc-icon"/>
                             </div>
                             <div className="text-center">
                                 <h1 className='text-white font-bold text-2xl tracking-wide'>STAINLESS STEEL FABRICATION</h1>
@@ -392,7 +531,7 @@ const aboutleftanimationProps = useSpring({
                         </animated.div>
                         <animated.div className="flex flex-col justify-center items-center p-4 border-2 service-card transition-slide" style={serviceanimationProps3}>
                             <div className="mb-4">
-                                <RiTruckLine className="h-40 w-40 mr-2 text-red-500 srvc-icon" />
+                                <RiTruckLine className="h-20 w-20 lg:h-28 lg:w-28 mr-2 text-red-500 srvc-icon" />
                             </div>
                             <div className="text-center">
                                 <h1 className='text-white font-bold text-2xl tracking-wide'>Body</h1>
@@ -403,7 +542,7 @@ const aboutleftanimationProps = useSpring({
                             <div className="mb-4">
                             {/* < GiFlamethrower /> */}
 
-                                <MdOutlineRoofing className="h-40 w-40 mr-2 text-red-500 srvc-icon" />
+                                <MdOutlineRoofing className="h-20 w-20 lg:h-28 lg:w-28 mr-2 text-red-500 srvc-icon" />
                             </div>
                             <div className="text-center">
                                 <h1 className='text-white font-bold text-2xl tracking-wide'>Polycarbon roofing</h1>
@@ -412,7 +551,7 @@ const aboutleftanimationProps = useSpring({
                         </animated.div>
                         <animated.div className="flex flex-col justify-center items-center p-4 border-2 service-card transition-slide" style={serviceanimationProps5}>
                             <div className="mb-4">
-                            <MdOutlineRoofing className="h-40 w-40 mr-2 text-red-500 srvc-icon" />
+                            <MdOutlineRoofing className="h-20 w-20 lg:h-28 lg:w-28 mr-2 text-red-500 srvc-icon" />
 
                             </div>
                             <div className="text-center">
@@ -422,7 +561,7 @@ const aboutleftanimationProps = useSpring({
                         </animated.div>
                         <animated.div className="flex flex-col justify-center items-center p-4 border-2 service-card transition-slide" style={serviceanimationProps6}>
                             <div className="mb-4">
-                                <GiSteampunkGoggles className="h-40 w-40 mr-2 text-red-500 srvc-icon" />
+                                <GiSteampunkGoggles className="h-20 w-20 lg:h-28 lg:w-28 mr-2 text-red-500 srvc-icon" />
                             </div>
                             <div className="text-center">
                                 <h1 className='text-white font-bold text-2xl tracking-wide'>AUTOMATIC GATE</h1>
@@ -483,7 +622,7 @@ const aboutleftanimationProps = useSpring({
         {/* ENd of SERVICES */}
 
         {/* PROJECT */}
-        <div id='projects'>
+        <div id='projects' ref={el => sections.current['#projects'] = el}>
             <div className='container'>
                 <h1 className='text-left pl-5 md:text-center lg:text-center font-bold text-red-500 content-heading pt-28'>
                     PROJECTS
@@ -491,74 +630,94 @@ const aboutleftanimationProps = useSpring({
                 <p className='text-2xl px-16 font-bold text-white md:text-center lg:text-center tracking-wide leading-tight tracking-wider md:px-10 md:text-4xl lg:text-4xl leading-none content-heading'>
                     TRANSFORMATIVE WELDING PROJECTS COMPLETED
                 </p>
-                <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4 mt-5 md:mx-8 lg:mx-24 xl:mx-24'>
-                    <div className="flex flex-col justify-center items-center p-4 border-2 project-card">
-                        <p>
-                            project1
-                        </p>
+                <div className="mx-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+                    <div className="project-card relative group">
+                        <img src={`${process.env.PUBLIC_URL}/ss.jpeg`} alt="Stainless Steel" className="w-full h-full object-cover filter grayscale group-hover:filter-none transition-all duration-300 ease-in-out"/>
                     </div>
-                    <div className="flex flex-col justify-center items-center p-4 border-2 project-card">
-                        <p>
-                            project2
-                        </p>
+                    <div className='mt-16'>
+                        <div className="project-card relative group">
+                            <img src={`${process.env.PUBLIC_URL}/roofing.jpeg`} alt="Roofing" className="w-full h-full object-cover filter grayscale group-hover:filter-none transition-all duration-300 ease-in-out"/>
+                        </div>
+                        <div className="project-card relative group mt-4">
+                            <img src={`${process.env.PUBLIC_URL}/gate.jpeg`} alt="Gate" className="w-full h-full object-cover filter grayscale group-hover:filter-none transition-all duration-300 ease-in-out"/>                      
+                        </div>
                     </div>
-                    <div className="flex flex-col justify-center items-center p-4 border-2 project-card">
-                        <p>
-                            project3
-                        </p>
+                    <div className="project-card relative group">
+                        <video 
+                            ref={videoRef} 
+                            src={`${process.env.PUBLIC_URL}/video.MOV`} 
+                            alt="Video" 
+                            controls 
+                            className={`w-full h-full object-cover filter ${!isPlaying ? 'grayscale' : ''} group-hover:filter-none transition-all duration-300 ease-in-out`}
+                            onPlay={() => setIsPlaying(true)}
+                            onPause={() => setIsPlaying(false)}
+                        />
+                        {!isPlaying && (
+                            <div 
+                                className="absolute inset-0 group-hover:filter-none flex justify-center items-center cursor-pointer"
+                                onClick={handlePlayPause}
+                            >
+                                <div className="flex items-center justify-center w-16 h-16 bg-red-500 rounded-full">
+                                    <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
         </div>
         {/* End of Project */}
-
-        {/* Contact */}
-        <div id='contact' style={{backgroundColor:'#222222'}}>
-            <div className='flex container justify-between mx-auto px-4 sm:px-6 md:px-8 lg:px-10' >
-                <div>
-                    <h3 className='font-bold text-gray-300'>
-                        LOCATION
-                    </h3>
-                    <h3 className='text-white'>
-                        Nooranadu, Alapuzha
-                    </h3>
-                </div>
-                <div>
-                    <h3 className='font-bold text-gray-300'>
-                        EMAIL
-                    </h3>
-                    <h3 className='text-white'>
-                        kiran@gmail.com
-                    </h3>
-                </div>
-                <div>
-                    <h3 className='font-bold text-gray-300'>
-                        CALL NOW
-                    </h3>
-                    <h3 className='text-white'>
-                        +91 987543210
-                    </h3>
-                </div>
-            </div>
-        </div>
-        {/* End of contact */}
-
+        
+    
         {/* Footer */}
-        <footer className=" py-4" style={{backgroundColor:'#121212'}}>
-            <div className="container mx-auto flex justify-between items-center">
-                <div>
-                    <a href="#" className="text-white hover:text-gray-400 mr-4">
-                        <FaFacebook />
-                    </a>
+
+        <footer id='contact' ref={el => sections.current['#contact'] = el} className="bg-black text-white py-8 px-8">
+            <div className="container mx-auto flex flex-wrap justify-between">
+                <div className="w-full md:w-1/2 lg:w-1/4 px-4 mb-6 mt-10">
+                    <img src={`${process.env.PUBLIC_URL}/logo.png`} className='filter brightness-0 invert h-24' alt="Map" />
+                    <div className='flex mt-5'>
+                        <a href="#" className="flex items-center justify-center ms-10 w-12 h-12 hover:bg-red-500 border border-white rounded-full text-white">
+                            <FaInstagram />
+                        </a>
+                        <a href="#" className="flex items-center mx-5 justify-center w-12 h-12 hover:bg-red-500 border border-white rounded-full text-white">
+                            <FaWhatsapp />
+                        </a>
+                        <a href="#" className="flex items-center justify-center w-12 h-12 border hover:bg-red-500 border-white rounded-full text-white">
+                            <FaFacebook />
+                        </a>
+                    </div>
                 </div>
-                <div>
-                    <a href="#" className="text-white hover:text-gray-400 mr-4">Home</a>
-                    <a href="#" className="text-white hover:text-gray-400 mr-4">About</a>
-                    <a href="#" className="text-white hover:text-gray-400 mr-4">Services</a>
-                    <a href="#" className="text-white hover:text-gray-400">Contact</a>
+                {/* Contact Information */}
+                <div className="w-full md:w-1/2 lg:w-1/4 px-4 mb-6">
+                    <h2 className="text-lg font-bold mb-4">Contact</h2>
+                    <p className="mb-2 flex items-center tracking-wider hover:text-red-500 leading-loose mt-6"><FaMapMarkerAlt className="mr-2"/>Nooranadu, Alappuzha</p>
+                    <p className="mb-2 flex items-center tracking-wider hover:text-red-500 leading-loose"><FaEnvelope className="mr-2"/>Kiranironbuilders@gmail.com</p>
+                    <p className="mb-2 flex items-center tracking-wider hover:text-red-500 leading-loose"><FaPhoneAlt className="mr-2"/>+91 9207083903</p>
+                    <p className="mb-2 flex items-center tracking-wider hover:text-red-500 leading-loose"><FaWhatsapp className="mr-2"/>+91 9207083903</p>
+                </div>
+
+                {/* Map Image */}
+                <div className="w-full md:w-1/2 lg:w-1/4 mb-6 flex flex-wrap justify-between pe-4">
+                    <h2 className="text-lg font-bold mb-4">We are here!</h2>
+                    <img src={`${process.env.PUBLIC_URL}/map.jpeg`} alt="Map" className="h-40 mt-1 rounded-lg shadow-lg" />
+                </div>
+
+                {/* Sitemap */}
+                <div className="w-full md:w-1/2 lg:w-1/4 px-4 mb-6 justify-items-end">
+                    <h2 className="text-lg font-bold mb-4">Sitemap</h2>
+                    <ul className='mt-5'>
+                        <li><a href="#home" className="text-gray-400 hover:text-red-500 tracking-wider leading-loose">Home</a></li>
+                        <li><a href="#about" className="text-gray-400 hover:text-red-500 tracking-wider leading-loose">About us</a></li>
+                        <li><a href="#services" className="text-gray-400 hover:text-red-500 tracking-wider leading-loose	">Services</a></li>
+                        <li><a href="#services" className="text-gray-400 hover:text-red-500 tracking-wider leading-loose	">Project</a></li>
+                        <li><a href="#contact" className="text-gray-400 hover:text-red-500 tracking-wider leading-loose">Contact</a></li>
+                    </ul>
                 </div>
             </div>
         </footer>
+
         {/* End of Footer */}
 
     </div>

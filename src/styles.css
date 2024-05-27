@@ -69,6 +69,34 @@
     }
 }
 
+@keyframes slide {
+    from{
+        transform: translateX(10%);
+    }
+    to{
+        transform: translateX(-90%);
+    }
+}
+
+.logos{
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.logos-slide{
+    animation: 30s slide infinite linear;
+
+}
+
+.logos:hover .logos-slide{
+    animation-play-state: paused;
+}
+
+/* .client-logo{
+    aspect-ratio: 3/2;
+    object-fit: contain;
+} */
+
 /* services */
 
 .service-card{
