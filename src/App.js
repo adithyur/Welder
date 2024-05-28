@@ -1,17 +1,26 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import Home from './components/Home';
-import Navbar from './components/Navbar';
+import LoadingComponent from './components/LoadingComponent';
 import 'tailwindcss/tailwind.css';
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+        setIsLoading(false);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+}, []);
+
+if (isLoading) {
+    return <LoadingComponent />;
+}
+
   return (
     <div className="App">
-      <Router>
-        <Routes>
-          <Route path='/' element={<Home/>}/>
-          <Route path='/navbar'element={<Navbar/>}/>
-        </Routes>
-      </Router>
+      {isLoading ? <LoadingComponent /> : <Home/>}
     </div>
   );
 }
