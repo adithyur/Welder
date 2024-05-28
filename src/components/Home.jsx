@@ -398,7 +398,7 @@ const aboutleftanimationProps = useSpring({
                             WELDING <br/> CRAFTSMANSHIP <br/> FORGING EXCELLENCE
                         </p>
                         <p className="mt-8 mb-4 text-gray-400">
-                            Welcome to our welding shop! We specialize in high-quality welding services for residential and commercial projects.
+                            Welcome to our Kiran Iron Builders! We specialize in high-quality welding services for residential and commercial projects.
                         </p>
                         <p className="mb-4 text-gray-400">
                             From metal fabrication to repairs, our skilled team ensures exceptional results. We focus on craftsmanship, attention to detail, and customer satisfaction.
