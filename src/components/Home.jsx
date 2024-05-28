@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { useSpring, animated } from '@react-spring/web'
 import CountUp from 'react-countup';
 import { MdHomeWork } from "react-icons/md";
-import { GiFlamethrower } from "react-icons/gi";
+import { GiFlamethrower, GiGate } from "react-icons/gi";
 import { MdOutlineRoofing } from "react-icons/md";
 import { RiTruckLine } from "react-icons/ri";
 import { GiSteampunkGoggles } from "react-icons/gi";
@@ -513,6 +513,35 @@ const aboutleftanimationProps = useSpring({
                     <div className='services-txt grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-5 md:mx-8 lg:mx-24 xl:mx-28'>
                         <animated.div className="flex flex-col justify-center items-center p-4 border-2 service-card transition-slide" style={serviceanimationProps1}>
                             <div className="mb-4">
+                                <MdOutlineRoofing className="h-20 w-20 lg:h-28 lg:w-28 mr-2 text-red-500 srvc-icon" />
+                            </div>
+                            <div className="text-center">
+                                <h1 className='text-white font-bold text-2xl tracking-wide'>POLYCARBON ROOFING</h1>
+                                <p className='text-gray-400 mt-5'>Durable and lightweight polycarbonate roofing solutions.</p>
+                            </div>
+                        </animated.div>
+                        <animated.div className="flex flex-col justify-center items-center p-4 border-2 service-card transition-slide" style={serviceanimationProps2}>
+                            <div className="mb-4">
+                                <MdOutlineRoofing className="h-20 w-20 lg:h-28 lg:w-28 mr-2 text-red-500 srvc-icon"/>
+                            </div>
+                            <div className="text-center">
+                                <h1 className='text-white font-bold text-2xl tracking-wide'>CERAMIC ROOFING</h1>
+                                <p className='text-gray-400 mt-5'>Premium ceramic roofing for lasting beauty and durability.</p>
+                            </div>
+                        </animated.div>
+                        <animated.div className="flex flex-col justify-center items-center p-4 border-2 service-card transition-slide" style={serviceanimationProps3}>
+                            <div className="mb-4">
+                                <MdOutlineRoofing className="h-20 w-20 lg:h-28 lg:w-28 mr-2 text-red-500 srvc-icon" />
+                            </div>
+                            <div className="text-center">
+                                <h1 className='text-white font-bold text-2xl tracking-wide'>STONE COATED SHEET ROOFING</h1>
+                                <p className='text-gray-400 mt-5'> Premium stone-coated sheet roofing for enhanced durability and aesthetic appeal.</p>
+                            </div>
+                        </animated.div>
+                        <animated.div className="flex flex-col justify-center items-center p-4 border-2 service-card transition-slide" style={serviceanimationProps4}>
+                            <div className="mb-4">
+                            {/* < GiFlamethrower /> */}
+
                                 <MdHomeWork className="h-20 w-20 lg:h-28 lg:w-28 mr-2 text-red-500 srvc-icon" />
                             </div>
                             <div className="text-center">
@@ -520,52 +549,23 @@ const aboutleftanimationProps = useSpring({
                                 <p className='text-gray-400 mt-5'>Expert on-site structural fabrication services for precision and durability.</p>
                             </div>
                         </animated.div>
-                        <animated.div className="flex flex-col justify-center items-center p-4 border-2 service-card transition-slide" style={serviceanimationProps2}>
-                            <div className="mb-4">
-                                <GiGloves className="h-20 w-20 lg:h-28 lg:w-28 mr-2 text-red-500 srvc-icon"/>
-                            </div>
-                            <div className="text-center">
-                                <h1 className='text-white font-bold text-2xl tracking-wide'>STAINLESS STEEL FABRICATION</h1>
-                                <p className='text-gray-400 mt-5'>High-quality stainless steel fabrication for precision engineering.</p>
-                            </div>
-                        </animated.div>
-                        <animated.div className="flex flex-col justify-center items-center p-4 border-2 service-card transition-slide" style={serviceanimationProps3}>
-                            <div className="mb-4">
-                                <RiTruckLine className="h-20 w-20 lg:h-28 lg:w-28 mr-2 text-red-500 srvc-icon" />
-                            </div>
-                            <div className="text-center">
-                                <h1 className='text-white font-bold text-2xl tracking-wide'>Body</h1>
-                                <p className='text-gray-400 mt-5'>Expert vehicle body work for flawless repairs and refinishing.</p>
-                            </div>
-                        </animated.div>
-                        <animated.div className="flex flex-col justify-center items-center p-4 border-2 service-card transition-slide" style={serviceanimationProps4}>
-                            <div className="mb-4">
-                            {/* < GiFlamethrower /> */}
-
-                                <MdOutlineRoofing className="h-20 w-20 lg:h-28 lg:w-28 mr-2 text-red-500 srvc-icon" />
-                            </div>
-                            <div className="text-center">
-                                <h1 className='text-white font-bold text-2xl tracking-wide'>Polycarbon roofing</h1>
-                                <p className='text-gray-400 mt-5'>Durable and lightweight polycarbonate roofing solutions.</p>
-                            </div>
-                        </animated.div>
                         <animated.div className="flex flex-col justify-center items-center p-4 border-2 service-card transition-slide" style={serviceanimationProps5}>
                             <div className="mb-4">
-                            <MdOutlineRoofing className="h-20 w-20 lg:h-28 lg:w-28 mr-2 text-red-500 srvc-icon" />
-
-                            </div>
-                            <div className="text-center">
-                                <h1 className='text-white font-bold text-2xl tracking-wide'>Ceramic roofing</h1>
-                                <p className='text-gray-400 mt-5'>Premium ceramic roofing for lasting beauty and durability.</p>
-                            </div>
-                        </animated.div>
-                        <animated.div className="flex flex-col justify-center items-center p-4 border-2 service-card transition-slide" style={serviceanimationProps6}>
-                            <div className="mb-4">
-                                <GiSteampunkGoggles className="h-20 w-20 lg:h-28 lg:w-28 mr-2 text-red-500 srvc-icon" />
+                                <GiGate className="h-20 w-20 lg:h-28 lg:w-28 mr-2 text-red-500 srvc-icon" />
                             </div>
                             <div className="text-center">
                                 <h1 className='text-white font-bold text-2xl tracking-wide'>AUTOMATIC GATE</h1>
                                 <p className='text-gray-400 mt-5'>Reliable automatic gate systems for enhanced security and convenience.</p>
+                            </div>
+                        </animated.div>
+                        <animated.div className="flex flex-col justify-center items-center p-4 border-2 service-card transition-slide" style={serviceanimationProps6}>
+                            <div className="mb-4">
+                                <GiGloves className="h-20 w-20 lg:h-28 lg:w-28 mr-2 text-red-500 srvc-icon" />
+                                {/* <GiSteampunkGoggles className="h-20 w-20 lg:h-28 lg:w-28 mr-2 text-red-500 srvc-icon" /> */}
+                            </div>
+                            <div className="text-center">
+                                <h1 className='text-white font-bold text-2xl tracking-wide'>STAINLESS STEEL FABRICATION</h1>
+                                <p className='text-gray-400 mt-5'>High-quality stainless steel fabrication for precision engineering.</p>  
                             </div>
                         </animated.div>
                     </div>
@@ -682,10 +682,14 @@ const aboutleftanimationProps = useSpring({
                             <a href="#" className="flex items-center justify-center -ms-5 w-12 h-12 hover:bg-red-500 border border-white rounded-full text-white">
                                 <FaInstagram />
                             </a>
-                            <a href="#" className="flex items-center mx-5 justify-center w-12 h-12 hover:bg-red-500 border border-white rounded-full text-white">
+                            <a 
+                                href="https://wa.me/919207083903" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="flex items-center mx-5 justify-center w-12 h-12 hover:bg-red-500 border border-white rounded-full text-white">
                                 <FaWhatsapp />
                             </a>
-                            <a href="#" className="flex items-center justify-center w-12 h-12 border hover:bg-red-500 border-white rounded-full text-white">
+                            <a href="https://www.facebook.com/profile.php?id=100063949719420&mibextid=JRoKGi" className="flex items-center justify-center w-12 h-12 border hover:bg-red-500 border-white rounded-full text-white">
                                 <FaFacebook />
                             </a>
                         </div>
