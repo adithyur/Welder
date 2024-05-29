@@ -407,8 +407,10 @@ const aboutleftanimationProps = useSpring({
                             Contact us today to discuss your project needs. Let us help you achieve your welding goals!
                         </p>
                         <p className="mb-8 text-xl text-white mt-12">
-                            Roof works starts @ <span className='text-red-500 font-bold'> SQFT ₹15 </span> only
+                            Specialists in roofing services across Kerala, Tamil Nadu, and Karnataka.<br/>
+                            Roofing services starting at <span className='text-red-500 font-bold'> ₹15 per SQFT </span> only.
                         </p>
+
                     </div>
                     <div className='flex flex-col md:flex-row lg:flex-row mx-auto'>
                         <div className="count-value-container">
@@ -647,7 +649,8 @@ const aboutleftanimationProps = useSpring({
                             ref={videoRef} 
                             src={`${process.env.PUBLIC_URL}/video.MOV`} 
                             alt="Video" 
-                            controls 
+                            controls
+                            muted 
                             className={`w-full h-full object-cover filter ${!isPlaying ? 'grayscale' : ''} group-hover:filter-none transition-all duration-300 ease-in-out`}
                             onPlay={() => setIsPlaying(true)}
                             onPause={() => setIsPlaying(false)}
@@ -706,10 +709,17 @@ const aboutleftanimationProps = useSpring({
                         className="mb-2 flex items-center tracking-wider hover:text-red-500 leading-loose"
                         href='mailto:Kiranironbuilders@gmail.com'
                     ><FaEnvelope className="mr-2"/>Kiranironbuilders@gmail.com</a>
-                    <a 
-                        className="mb-2 flex items-center tracking-wider hover:text-red-500 leading-loose"
-                        href="tel:+919207083903"
-                    ><FaPhoneAlt className="mr-2"/>+91 9207083903</a>
+                    <span className='flex'>
+                        <a 
+                            className="mb-2 flex items-center tracking-wider hover:text-red-500 leading-loose"
+                            href="tel:+919207083903"
+                        ><FaPhoneAlt className="mr-2"/>+91 9207083903</a>
+                        &nbsp; , &nbsp;
+                        <a 
+                            className="mb-2 flex items-center tracking-wider hover:text-red-500 leading-loose"
+                            href="tel:+919072582986"
+                        >+91 9072582986</a>
+                    </span>
                     <a
                         href="https://wa.me/919207083903" 
                         target="_blank" 
