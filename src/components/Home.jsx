@@ -518,8 +518,8 @@ const aboutleftanimationProps = useSpring({
                                 <MdOutlineRoofing className="h-20 w-20 lg:h-28 lg:w-28 mr-2 text-red-500 srvc-icon" />
                             </div>
                             <div className="text-center">
-                                <h1 className='text-white font-bold text-2xl tracking-wide'>POLYCARBON ROOFING</h1>
-                                <p className='text-gray-400 mt-5'>Durable and lightweight polycarbonate roofing solutions.</p>
+                                <h1 className='text-white font-bold text-2xl tracking-wide'>STONE COATED SHEET ROOFING</h1>
+                                <p className='text-gray-400 mt-5'> Premium stone-coated sheet roofing for enhanced durability and aesthetic appeal.</p>
                             </div>
                         </animated.div>
                         <animated.div className="flex flex-col justify-center items-center p-4 border-2 service-card transition-slide" style={serviceanimationProps2}>
@@ -536,8 +536,8 @@ const aboutleftanimationProps = useSpring({
                                 <MdOutlineRoofing className="h-20 w-20 lg:h-28 lg:w-28 mr-2 text-red-500 srvc-icon" />
                             </div>
                             <div className="text-center">
-                                <h1 className='text-white font-bold text-2xl tracking-wide'>STONE COATED SHEET ROOFING</h1>
-                                <p className='text-gray-400 mt-5'> Premium stone-coated sheet roofing for enhanced durability and aesthetic appeal.</p>
+                                <h1 className='text-white font-bold text-2xl tracking-wide'>POLYCARBON ROOFING</h1>
+                                <p className='text-gray-400 mt-5'>Durable and lightweight polycarbonate roofing solutions.</p>
                             </div>
                         </animated.div>
                         <animated.div className="flex flex-col justify-center items-center p-4 border-2 service-card transition-slide" style={serviceanimationProps4}>
