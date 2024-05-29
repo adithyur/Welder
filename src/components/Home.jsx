@@ -679,7 +679,7 @@ const aboutleftanimationProps = useSpring({
                     <div className='flex flex-col items-center justify-center'>
                         <img src={`${process.env.PUBLIC_URL}/logo.png`} className='filter brightness-0 invert h-24' alt="Map" />
                         <div className='flex mt-5'>
-                            <a href="#" className="flex items-center justify-center -ms-5 w-12 h-12 hover:bg-red-500 border border-white rounded-full text-white">
+                            <a href="https://www.instagram.com/kiran_iron_builders?igsh=b216ems1cWNrcDI4" className="flex items-center justify-center -ms-5 w-12 h-12 hover:bg-red-500 border border-white rounded-full text-white">
                                 <FaInstagram />
                             </a>
                             <a 
